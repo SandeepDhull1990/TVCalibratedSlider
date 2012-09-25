@@ -10,13 +10,13 @@
 typedef struct {
     short int minimumValue;
     short int maximumValue;
-} TVScaledSliderRange;
+} TVCalibratedSliderRange;
 
 
 typedef enum {
-    TVScaledSliderStyleDefault ,
+    TVCalibratedSliderStyleDefault ,
     TavicsaStyle
-} TVScaledSliderStyle;
+} TVCalibratedSliderStyle;
 
 typedef void (^TVSliderValueChangedBlock)(id sender);
 
@@ -25,12 +25,14 @@ typedef void (^TVSliderValueChangedBlock)(id sender);
 /**
  A control used to select a value from a bunch of values. 
  This control is drawn as horizontal bar with scale below it.
- -------
+ 
  USAGE :
- -------
- TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWithFrame:CGRectMake(..,..,..,..) withStyle:TavicsaStyle];
- [programmaticallyCreatedTVSlider setRange:range];
- [programmaticallyCreatedTVSlider setDelegate:self] ;
+ 
+    TVCalibratedSlider *programmaticallyCreatedTVSlider = [[TVCalibratedSlider alloc] initWithFrame:CGRectMake(..,..,..,..) withStyle:TavicsaStyle];
+ 
+    [programmaticallyCreatedTVSlider setRange:range];
+ 
+    [programmaticallyCreatedTVSlider setDelegate:self] ;
  
  */
 
@@ -42,39 +44,41 @@ typedef void (^TVSliderValueChangedBlock)(id sender);
 
 @property (nonatomic, strong) UIColor *markerValueColor;
 
-@property (nonatomic) TVScaledSliderStyle style;
+@property (nonatomic) TVCalibratedSliderStyle style;
 
 /**
  @abstract Initialize the slider with a frame and style.
  
- @param frame
+ @param frame The frame rectangle of the TVCalibratedSlider.
  @param style Constant indicating slider style.
  @return TVScaledSlider or nil.
  */
-- (id)initWithFrame:(CGRect)frame withStyle:(TVScaledSliderStyle)style;
+- (id)initWithFrame:(CGRect)frame withStyle:(TVCalibratedSliderStyle)style;
 
 /**
  @abstract Sets the current value.
- @param value
+ 
+ @param value The new value to assign to the value property
  */
-- (void)setValue:(NSInteger)value ;
+- (void)setValue:(NSInteger)value;
 
 /**
  @abstract Returns the current value of the slider.
  @return Value The value of the position where the slider is currently positioned.
  */
-- (NSInteger)value ;
+- (NSInteger)value;
 
 /**
  @abstract Set the slider range.
- @param range
+ 
+ @param range TVCalibratedSliderRange.
  */
-- (void)setRange:(TVScaledSliderRange)range;
+- (void)setRange:(TVCalibratedSliderRange)range;
 
 /**
  @return Slider range.
  */
-- (TVScaledSliderRange)range;
+- (TVCalibratedSliderRange)range;
 
 /**
  @abstract Assigns a maximum track image to the specified control states.
@@ -123,6 +127,30 @@ typedef void (^TVSliderValueChangedBlock)(id sender);
  @param color Text color on the highlighted thumb image.
  */
 - (void)setTextColorForHighlightedState:(UIColor *)color;
+
+/**
+ @abstract Set the text font on the highlighted thumb image.
+ @param font Text font on the highlighted thumb image.
+ */
+- (void)setTextFontForHighlightedState:(UIFont *)font;
+
+/**
+ @abstract Set position of the text on the highlighted thumb image.
+ @param position Text postion on the highlighted thumb image.
+ */
+- (void)setTextPositionForHighlightedStateRelativeToThumbImage:(CGPoint)position;
+
+/**
+ @abstract Set offset of marker Image from the center of slider.
+ @param offset offset from the center of the slider.
+ */
+- (void)setMarkerImageOffsetFromSlider:(float)offset;
+
+/**
+ @abstract Set offset of marker value from the marker image .
+ @param offset offset from the marker image.
+ */
+- (void)setMarkerValueOffsetFromSlider:(float)offset;
 @end
 
 
@@ -130,7 +158,7 @@ typedef void (^TVSliderValueChangedBlock)(id sender);
 
 /**
  @abstract This method will be called by the TVScaledSlider when the value of slider changes.
- @param tvScaledSlider TVScaledSlider
+ @param tvScaledSlider TVScaledSlider, object indicating that value has changed.
  */
 - (void)valueChanged:(TVCalibratedSlider *)tvScaledSlider;
 @end

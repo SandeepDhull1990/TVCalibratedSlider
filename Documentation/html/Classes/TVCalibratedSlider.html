@@ -48,6 +48,10 @@
 	
 	<option value="//api/name/range">&nbsp;&nbsp;&nbsp;&nbsp;- range</option>
 	
+	<option value="//api/name/setMarkerImageOffsetFromSlider:">&nbsp;&nbsp;&nbsp;&nbsp;- setMarkerImageOffsetFromSlider:</option>
+	
+	<option value="//api/name/setMarkerValueOffsetFromSlider:">&nbsp;&nbsp;&nbsp;&nbsp;- setMarkerValueOffsetFromSlider:</option>
+	
 	<option value="//api/name/setMaximumTrackImage:withCapInsets:forState:">&nbsp;&nbsp;&nbsp;&nbsp;- setMaximumTrackImage:withCapInsets:forState:</option>
 	
 	<option value="//api/name/setMinimumTrackImage:withCapInsets:forState:">&nbsp;&nbsp;&nbsp;&nbsp;- setMinimumTrackImage:withCapInsets:forState:</option>
@@ -57,6 +61,10 @@
 	<option value="//api/name/setScaleMarkerImage:">&nbsp;&nbsp;&nbsp;&nbsp;- setScaleMarkerImage:</option>
 	
 	<option value="//api/name/setTextColorForHighlightedState:">&nbsp;&nbsp;&nbsp;&nbsp;- setTextColorForHighlightedState:</option>
+	
+	<option value="//api/name/setTextFontForHighlightedState:">&nbsp;&nbsp;&nbsp;&nbsp;- setTextFontForHighlightedState:</option>
+	
+	<option value="//api/name/setTextPositionForHighlightedStateRelativeToThumbImage:">&nbsp;&nbsp;&nbsp;&nbsp;- setTextPositionForHighlightedStateRelativeToThumbImage:</option>
 	
 	<option value="//api/name/setThumbImage:forState:">&nbsp;&nbsp;&nbsp;&nbsp;- setThumbImage:forState:</option>
 	
@@ -98,6 +106,10 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/range">range</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setMarkerImageOffsetFromSlider:">setMarkerImageOffsetFromSlider:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setMarkerValueOffsetFromSlider:">setMarkerValueOffsetFromSlider:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setMaximumTrackImage:withCapInsets:forState:">setMaximumTrackImage:withCapInsets:forState:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setMinimumTrackImage:withCapInsets:forState:">setMinimumTrackImage:withCapInsets:forState:</a></span></li>
@@ -107,6 +119,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setScaleMarkerImage:">setScaleMarkerImage:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setTextColorForHighlightedState:">setTextColorForHighlightedState:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setTextFontForHighlightedState:">setTextFontForHighlightedState:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setTextPositionForHighlightedStateRelativeToThumbImage:">setTextPositionForHighlightedStateRelativeToThumbImage:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setThumbImage:forState:">setThumbImage:forState:</a></span></li>
 	
@@ -154,11 +170,16 @@
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>A control used to select a value from a bunch of values.
-This control is drawn as horizontal bar with scale below it.
-USAGE :
-TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWithFrame:CGRectMake(..,..,..,..) withStyle:TavicsaStyle];
+This control is drawn as horizontal bar with scale below it.</p>
+
+<p>USAGE :</p>
+
+<pre><code>TVCalibratedSlider *programmaticallyCreatedTVSlider = [[TVCalibratedSlider alloc] initWithFrame:CGRectMake(..,..,..,..) withStyle:TavicsaStyle];
+
 [programmaticallyCreatedTVSlider setRange:range];
-[programmaticallyCreatedTVSlider setDelegate:self] ;</p>
+
+[programmaticallyCreatedTVSlider setDelegate:self] ;
+</code></pre>
 					</div>
 					
 					
@@ -184,8 +205,7 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setValue:">&ndash;&nbsp;setValue:</a></code>
-		<span class="tooltip"><p>@abstract Sets the current <a href="#//api/name/value">value</a>.
-@param <a href="#//api/name/value">value</a></p></span>
+		<span class="tooltip"><p>@abstract Sets the current <a href="#//api/name/value">value</a>.</p></span>
 	</span>
 	
 	
@@ -199,8 +219,7 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setRange:">&ndash;&nbsp;setRange:</a></code>
-		<span class="tooltip"><p>@abstract Set the slider <a href="#//api/name/range">range</a>.
-@param <a href="#//api/name/range">range</a></p></span>
+		<span class="tooltip"><p>@abstract Set the slider <a href="#//api/name/range">range</a>.</p></span>
 	</span>
 	
 	
@@ -253,6 +272,34 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 	</span>
 	
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setTextFontForHighlightedState:">&ndash;&nbsp;setTextFontForHighlightedState:</a></code>
+		<span class="tooltip"><p>@abstract Set the text font on the highlighted thumb image.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setTextPositionForHighlightedStateRelativeToThumbImage:">&ndash;&nbsp;setTextPositionForHighlightedStateRelativeToThumbImage:</a></code>
+		<span class="tooltip"><p>@abstract Set position of the text on the highlighted thumb image.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setMarkerImageOffsetFromSlider:">&ndash;&nbsp;setMarkerImageOffsetFromSlider:</a></code>
+		<span class="tooltip"><p>@abstract Set offset of marker Image from the center of slider.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setMarkerValueOffsetFromSlider:">&ndash;&nbsp;setMarkerValueOffsetFromSlider:</a></code>
+		<span class="tooltip"><p>@abstract Set offset of marker <a href="#//api/name/value">value</a> from the marker image .</p></span>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -282,12 +329,17 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithFrame:(CGRect)<em>frame</em> withStyle:(TVScaledSliderStyle)<em>style</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithFrame:(CGRect)<em>frame</em> withStyle:(TVCalibratedSliderStyle)<em>style</em></code></div>
 
     
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>frame</em></dt>
+			<dd><p>The frame rectangle of the TVCalibratedSlider.</p></dd>
+		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>style</em></dt>
@@ -310,8 +362,6 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>@abstract Initialize the slider with a frame and style.</p>
-
-<p>@param frame</p>
 	</div>
 	
 	
@@ -340,7 +390,7 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (TVScaledSliderRange)range</code></div>
+	<div class="method-subsection method-declaration"><code>- (TVCalibratedSliderRange)range</code></div>
 
     
 	
@@ -354,6 +404,108 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TVCalibratedSlider.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setMarkerImageOffsetFromSlider:" title="setMarkerImageOffsetFromSlider:"></a>
+	<h3 class="subsubtitle method-title">setMarkerImageOffsetFromSlider:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>@abstract Set offset of marker Image from the center of slider.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setMarkerImageOffsetFromSlider:(float)<em>offset</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>offset</em></dt>
+			<dd><p>offset from the center of the slider.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@abstract Set offset of marker Image from the center of slider.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TVCalibratedSlider.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setMarkerValueOffsetFromSlider:" title="setMarkerValueOffsetFromSlider:"></a>
+	<h3 class="subsubtitle method-title">setMarkerValueOffsetFromSlider:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>@abstract Set offset of marker <a href="#//api/name/value">value</a> from the marker image .</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setMarkerValueOffsetFromSlider:(float)<em>offset</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>offset</em></dt>
+			<dd><p>offset from the marker image.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@abstract Set offset of marker <a href="#//api/name/value">value</a> from the marker image .</p>
+	</div>
 	
 	
 	
@@ -498,15 +650,24 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>@abstract Set the slider <a href="#//api/name/range">range</a>.
-@param <a href="#//api/name/range">range</a></p>
+		<p>@abstract Set the slider <a href="#//api/name/range">range</a>.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)setRange:(TVScaledSliderRange)<em>range</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)setRange:(TVCalibratedSliderRange)<em>range</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>range</em></dt>
+			<dd><p>TVCalibratedSliderRange.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -516,8 +677,7 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>@abstract Set the slider <a href="#//api/name/range">range</a>.
-@param <a href="#//api/name/range">range</a></p>
+		<p>@abstract Set the slider <a href="#//api/name/range">range</a>.</p>
 	</div>
 	
 	
@@ -620,6 +780,108 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>@abstract Set the text color on the highlighted thumb image.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TVCalibratedSlider.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setTextFontForHighlightedState:" title="setTextFontForHighlightedState:"></a>
+	<h3 class="subsubtitle method-title">setTextFontForHighlightedState:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>@abstract Set the text font on the highlighted thumb image.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setTextFontForHighlightedState:(UIFont *)<em>font</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>font</em></dt>
+			<dd><p>Text font on the highlighted thumb image.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@abstract Set the text font on the highlighted thumb image.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TVCalibratedSlider.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setTextPositionForHighlightedStateRelativeToThumbImage:" title="setTextPositionForHighlightedStateRelativeToThumbImage:"></a>
+	<h3 class="subsubtitle method-title">setTextPositionForHighlightedStateRelativeToThumbImage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>@abstract Set position of the text on the highlighted thumb image.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setTextPositionForHighlightedStateRelativeToThumbImage:(CGPoint)<em>position</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>position</em></dt>
+			<dd><p>Text postion on the highlighted thumb image.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@abstract Set position of the text on the highlighted thumb image.</p>
 	</div>
 	
 	
@@ -762,8 +1024,7 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>@abstract Sets the current <a href="#//api/name/value">value</a>.
-@param <a href="#//api/name/value">value</a></p>
+		<p>@abstract Sets the current <a href="#//api/name/value">value</a>.</p>
 	</div>		
 	
     
@@ -771,6 +1032,16 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 	<div class="method-subsection method-declaration"><code>- (void)setValue:(NSInteger)<em>value</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd><p>The new <a href="#//api/name/value">value</a> to assign to the <a href="#//api/name/value">value</a> property</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -780,8 +1051,7 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>@abstract Sets the current <a href="#//api/name/value">value</a>.
-@param <a href="#//api/name/value">value</a></p>
+		<p>@abstract Sets the current <a href="#//api/name/value">value</a>.</p>
 	</div>
 	
 	
@@ -857,7 +1127,7 @@ TVScaledSlider *programmaticallyCreatedTVSlider = [[TVScaledSlider alloc] initWi
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Tavisca software. All rights reserved. (Last updated: 2012-09-21)</span><br />
+						<p><span class="copyright">&copy; 2012 Tavisca software. All rights reserved. (Last updated: 2012-09-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

@@ -11,6 +11,9 @@
     UIImage *_thumbImage;
     CGPoint  _offset;
     UIColor *_highlightedStateTextColor;
+    UIFont  *_highlightedStateTextFont;
+    CGPoint highlightedStateTextPosition;
+    BOOL isHighlightedStateTextPositionCustom;
 }
 @end
 
@@ -22,6 +25,7 @@
         self.backgroundColor = [UIColor clearColor];
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _highlightedStateTextColor = [UIColor whiteColor];
+        _highlightedStateTextFont = [UIFont systemFontOfSize:16];
     }
     return self;
 }
@@ -35,9 +39,12 @@
     [_thumbImage drawAtPoint:CGPointMake(0, 0)];
     [_highlightedStateTextColor set];
     CGSize size = [value sizeWithFont:[UIFont systemFontOfSize:16]];
-    [value drawAtPoint:CGPointMake(_thumbImage.size.width/2 - size.width/2 , 0) withFont:[UIFont systemFontOfSize:16]];
+    if(!isHighlightedStateTextPositionCustom){
+        highlightedStateTextPosition = CGPointMake(_thumbImage.size.width/2 - size.width/2, 0);
+    }
+    [value drawAtPoint:highlightedStateTextPosition withFont:_highlightedStateTextFont];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    [self setThumbImage:image forState:UIControlStateHighlighted withOffsetRelativeToCenterOfTrack:_offset];
+    [self setThumbImage:image forState:UIControlStateHighlighted];
     UIGraphicsEndImageContext();
 }
 
@@ -52,7 +59,7 @@
 
 - (void)setThumbImage:(UIImage *)thumbImage forState:(UIControlState)state withOffsetRelativeToCenterOfTrack:(CGPoint)offset {
     [super setThumbImage:thumbImage forState:state];
-    if(state == UIControlStateHighlighted && (thumbImage == nil || _thumbImage == nil)) {
+    if(state == UIControlStateHighlighted) {
         _thumbImage = thumbImage;
         _offset = offset;
     }
@@ -60,6 +67,15 @@
 
 - (void)setTextColorForHighlightedState:(UIColor *)color {
     _highlightedStateTextColor = color;
+}
+
+- (void)setTextPositionForHighlightedStateRelativeToThumbImage:(CGPoint)position {
+    isHighlightedStateTextPositionCustom = YES;
+    highlightedStateTextPosition = position;
+}
+
+-(void)setTextFontForHighlightedState:(UIFont *)font {
+    _highlightedStateTextFont = font;
 }
 
 @end

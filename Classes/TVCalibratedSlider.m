@@ -10,8 +10,10 @@
 
 @interface TVCalibratedSlider () {
     TVSlider *_tvSliderView;
-    UIImage *_markerImage;
-    UIColor *_markerValueColor;
+    UIImage  *_markerImage;
+    UIColor  *_markerValueColor;
+    float    _markerImageOffsetFromSlider;
+    float    _markerValueOffsetFromSlider;
 }
 @end
 
@@ -46,7 +48,7 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame withStyle:(TVScaledSliderStyle)style {
+- (id)initWithFrame:(CGRect)frame withStyle:(TVCalibratedSliderStyle)style {
     self = [self initWithFrame:frame];
     if(self){
         self.style = style;
@@ -73,7 +75,7 @@
     
     for(int index = 0 ; index + _tvSliderView.minimumValue <= _tvSliderView.maximumValue ; index ++){
         float x = (scaleFactor * index) + thumbImage.size.width/2;
-        float y = _tvSliderView.center.y + _markerImage.size.height;
+        float y = _tvSliderView.center.y + _markerImage.size.height +_markerImageOffsetFromSlider;
         
         UIImageView *markerImageView  = [[UIImageView alloc] initWithImage:_markerImage];
         markerImageView.frame = CGRectMake(x, y, _markerImage.size.width, _markerImage.size.height);
@@ -82,7 +84,7 @@
         
         NSString *value = [NSString stringWithFormat:@"%0.0lf",index + _tvSliderView.minimumValue];
         CGSize size = [value sizeWithFont:[UIFont systemFontOfSize:10]];
-        [value drawAtPoint:CGPointMake(markerImageView.frame.origin.x - (size.width/2), markerImageView.frame.origin.y + markerImageView.frame.size.height) withFont:[UIFont systemFontOfSize:12]];
+        [value drawAtPoint:CGPointMake(markerImageView.frame.origin.x - (size.width/2), markerImageView.frame.origin.y + markerImageView.frame.size.height + _markerValueOffsetFromSlider) withFont:[UIFont systemFontOfSize:12]];
     }
 }
 
@@ -92,7 +94,7 @@
     [self redrawScale];
 }
 
-- (void)setStyle:(TVScaledSliderStyle)style {
+- (void)setStyle:(TVCalibratedSliderStyle)style {
     _style = style;
     if(style == TavicsaStyle) {
         [self setMaximumTrackImage:@"slider_gray.png" withCapInsets:UIEdgeInsetsMake(0, 16, 0, 16) forState:UIControlStateNormal];
@@ -157,14 +159,16 @@
     return round(_tvSliderView.value);
 }
 
-- (void)setRange:(TVScaledSliderRange)range {
-    _tvSliderView.maximumValue = range.maximumValue;
-    _tvSliderView.minimumValue = range.minimumValue;
+- (void)setRange:(TVCalibratedSliderRange)range {
+    if(range.maximumValue > range.minimumValue){
+        _tvSliderView.maximumValue = range.maximumValue;
+        _tvSliderView.minimumValue = range.minimumValue;
+    }
     [self redrawScale];
 }
 
-- (TVScaledSliderRange)range {
-    TVScaledSliderRange range;
+- (TVCalibratedSliderRange)range {
+    TVCalibratedSliderRange range;
     range.maximumValue = _tvSliderView.maximumValue;
     range.minimumValue = _tvSliderView.minimumValue;
     return range;
@@ -175,4 +179,23 @@
 - (void)setTextColorForHighlightedState:(UIColor *)color {
     [_tvSliderView setTextColorForHighlightedState:color];
 }
+
+-(void)setTextFontForHighlightedState:(UIFont *)font {
+    [_tvSliderView setTextFontForHighlightedState:font];
+}
+
+- (void)setTextPositionForHighlightedStateRelativeToThumbImage:(CGPoint)position {
+    [_tvSliderView setTextPositionForHighlightedStateRelativeToThumbImage:position];
+}
+
+- (void)setMarkerImageOffsetFromSlider:(float)offset {
+    _markerImageOffsetFromSlider = offset;
+    [self redrawScale];
+}
+
+-(void)setMarkerValueOffsetFromSlider:(float)offset {
+    _markerValueOffsetFromSlider = offset;
+    [self redrawScale];
+}
+
 @end

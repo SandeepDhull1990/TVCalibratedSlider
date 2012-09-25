@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    TVScaledSliderRange range;
+    TVCalibratedSliderRange range;
     range.maximumValue = 5;
     range.minimumValue = 1;
     
@@ -46,36 +46,43 @@
 //    _programmaticallyCreatedSlider.style = TVScaledSliderStyleCustom;
 
     _programmaticallyCreatedSlider = [[TVCalibratedSlider alloc] initWithFrame:containerView.bounds withStyle:TavicsaStyle];
-//    [_programmaticallyCreatedSlider setThumbImage:nil forState:UIControlStateHighlighted];
-//    [_programmaticallyCreatedSlider setThumbImage:nil forState:UIControlStateNormal];
-    TVScaledSliderRange range2;
-    range2.maximumValue = 15;
-    range2.minimumValue = 1;
+    
+    [_programmaticallyCreatedSlider setThumbImage:@"slider_hover.png" forState:UIControlStateHighlighted withOffsetRelativeToCenterOfTrack:CGPointMake(0, -15)];
+//    [_programmaticallyCreatedSlider setThumbImage:@"" forState:UIControlStateHighlighted];
+//    [_programmaticallyCreatedSlider setTextPositionForHighlightedStateRelativeToThumbImage:CGPointMake(0, 5)];
+    TVCalibratedSliderRange range2;
+    range2.maximumValue = 8;
+    range2.minimumValue = 2;
     [_programmaticallyCreatedSlider setRange:range2];
     [containerView addSubview:_programmaticallyCreatedSlider];
     [_programmaticallyCreatedSlider setTextColorForHighlightedState:[UIColor redColor]];
+    [_programmaticallyCreatedSlider setMarkerImageOffsetFromSlider:5];
+    [_programmaticallyCreatedSlider setMarkerValueOffsetFromSlider:10];
     [_programmaticallyCreatedSlider setDelegate:self] ;
 }
 
 - (IBAction)btnDecrementRange:(id)sender {
-    TVScaledSliderRange range;
+   TVCalibratedSliderRange range;
     range.maximumValue = 2;
     range.minimumValue = -5;
     [scaledSlider setRange:range];
-    _programmaticallyCreatedSlider.frame = CGRectMake(10, 0, 100, 150);
+    [_programmaticallyCreatedSlider setRange:range];
+//    _programmaticallyCreatedSlider.frame = CGRectMake(10, 0, 100, 150);
 }
 
 - (IBAction)btnIncrementRange:(id)sender {
-    TVScaledSliderRange range;
+    TVCalibratedSliderRange range;
     range.maximumValue = 8;
     range.minimumValue = 0;
     [scaledSlider setRange:range];
-    _programmaticallyCreatedSlider.frame = CGRectMake(10, 15, 300, 200);
-    [_programmaticallyCreatedSlider setRange:range];    
+//    _programmaticallyCreatedSlider.frame = CGRectMake(10, 15, 300, 200);
+    [_programmaticallyCreatedSlider setRange:range];
+    [_programmaticallyCreatedSlider setMarkerValueOffsetFromSlider:20];
+    [_programmaticallyCreatedSlider setTextPositionForHighlightedStateRelativeToThumbImage:CGPointMake(10, 10)];
+    [_programmaticallyCreatedSlider setTextFontForHighlightedState:[UIFont boldSystemFontOfSize:18]];
 }
 
 - (void)valueChanged:(TVCalibratedSlider *)sender {
     NSLog(@"Delegate called");
 }
-
 @end

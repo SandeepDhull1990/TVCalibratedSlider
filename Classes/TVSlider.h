@@ -26,4 +26,16 @@
  @param color Text color on the highlighted thumb image.
  */
 - (void)setTextColorForHighlightedState:(UIColor*)color;
+
+/**
+ @abstract Set the text font on the highlighted thumb image.
+ @param font Text font on the highlighted thumb image.
+ */
+- (void)setTextFontForHighlightedState:(UIFont *)font;
+
+/**
+ @abstract Set position of the text on the highlighted thumb image.
+ @param position Text postion on the highlighted thumb image.
+ */
+- (void)setTextPositionForHighlightedStateRelativeToThumbImage:(CGPoint)position;
 @end
