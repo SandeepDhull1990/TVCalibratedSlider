@@ -41,15 +41,13 @@
     
 //    Adding the slider programatically
     
-//    _programmaticallyCreatedSlider = [[TVScaledSlider alloc] init];
+//    _programmaticallyCreatedSlider = [[TVCalibratedSlider alloc] init];
 //    _programmaticallyCreatedSlider.frame = containerView.frame;
-//    _programmaticallyCreatedSlider.style = TVScaledSliderStyleCustom;
+//    _programmaticallyCreatedSlider.style = TavicsaStyle;
 
     _programmaticallyCreatedSlider = [[TVCalibratedSlider alloc] initWithFrame:containerView.bounds withStyle:TavicsaStyle];
     
-    [_programmaticallyCreatedSlider setThumbImage:@"slider_hover.png" forState:UIControlStateHighlighted withOffsetRelativeToCenterOfTrack:CGPointMake(0, -15)];
-//    [_programmaticallyCreatedSlider setThumbImage:@"" forState:UIControlStateHighlighted];
-//    [_programmaticallyCreatedSlider setTextPositionForHighlightedStateRelativeToThumbImage:CGPointMake(0, 5)];
+    [_programmaticallyCreatedSlider setThumbImage:nil forState:UIControlStateHighlighted];
     TVCalibratedSliderRange range2;
     range2.maximumValue = 8;
     range2.minimumValue = 2;
@@ -67,17 +65,18 @@
     range.minimumValue = -5;
     [scaledSlider setRange:range];
     [_programmaticallyCreatedSlider setRange:range];
-//    _programmaticallyCreatedSlider.frame = CGRectMake(10, 0, 100, 150);
+    _programmaticallyCreatedSlider.frame = CGRectMake(10, 0, 100, 150);
 }
 
 - (IBAction)btnIncrementRange:(id)sender {
+
     TVCalibratedSliderRange range;
     range.maximumValue = 8;
     range.minimumValue = 0;
     [scaledSlider setRange:range];
-//    _programmaticallyCreatedSlider.frame = CGRectMake(10, 15, 300, 200);
     [_programmaticallyCreatedSlider setRange:range];
     [_programmaticallyCreatedSlider setMarkerValueOffsetFromSlider:20];
+    [_programmaticallyCreatedSlider setThumbImage:@"slider_hover.png" forState:UIControlStateHighlighted withOffsetRelativeToCenterOfTrack:CGPointMake(0, -15)];
     [_programmaticallyCreatedSlider setTextPositionForHighlightedStateRelativeToThumbImage:CGPointMake(10, 10)];
     [_programmaticallyCreatedSlider setTextFontForHighlightedState:[UIFont boldSystemFontOfSize:18]];
 }
