@@ -1,6 +1,5 @@
 //
 //  TVSlider.h
-//
 //  Created by TavisacaIos on 9/4/12.
 //  Copyright (c) 2012 Tavisca. All rights reserved.
 //
